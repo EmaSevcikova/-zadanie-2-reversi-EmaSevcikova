@@ -13,8 +13,9 @@ public class OutOfBounds extends Tile{
         super.coordX = coordX;
         super.coordY = coordY;
     }
+
     @Override
     public void paint(Graphics g) {
-
     }
+
 }
