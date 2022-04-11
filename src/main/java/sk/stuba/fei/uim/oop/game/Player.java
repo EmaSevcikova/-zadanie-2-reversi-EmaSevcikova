@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.game;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +11,11 @@ public class Player {
 
     @Setter
     @Getter
-    private int playerNum;
-    private final List<Tile> playerStones;
+    protected int playerNum;
+    @Setter
+    @Getter
+    protected List<Tile> playerStones;
+
 
     public Player(int playerNum) {
         this.playerNum = playerNum;
