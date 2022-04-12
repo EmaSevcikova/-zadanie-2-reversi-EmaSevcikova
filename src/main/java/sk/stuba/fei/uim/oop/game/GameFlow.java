@@ -27,9 +27,8 @@ public class GameFlow {
         possibleMoves.put(this.board[mIndex + 1][mIndex - 1], List.of(this.board[mIndex][mIndex-1]));
         possibleMoves.put(this.board[mIndex][mIndex - 2], List.of(this.board[mIndex][mIndex - 1]));
     }
-    public void playerMove(int x, int y,Player player, Player opponent) {
+    public void playerMove(int x, int y,Player player) {
         for (Tile tile : possibleMoves.get(board[x][y])) {
-            System.out.println(x + " " + y);
             board[(tile.getCoordX())][(tile.getCoordY())] = new Stone(player, (tile.getCoordX()), (tile.getCoordY()));
             board[x][y] = new Stone(player, x, y);
 
@@ -50,7 +49,7 @@ public class GameFlow {
         for (int i = 1; i < board.length-1; i++){
             for (int j = 1; j < board.length-1; j++){
                 if(board[i][j] instanceof EmptyTile && isMovePossible(i,j,opponent)){
-                    possibleMoves.add(new EmptyTile(i,j));
+                    possibleMoves.add(board[i][j]);
                 }
             }
         }
@@ -59,20 +58,18 @@ public class GameFlow {
     public void findPossibleMoves(Player player, Player opponent){
         this.possibleMoves = new HashMap<>();
         List<Tile> possibleCells = moveFromEmptyCells(opponent);
-        List<Tile> opponentStones = new ArrayList<>();
         Move moves = new Move(board,player,opponent);
         for (Tile tile : possibleCells) {
+            List<Tile> opponentStones = new ArrayList<>();
             if (!moves.up(tile).isEmpty()){
                 for (Tile stone: moves.up(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.up(tile));
             }
             if (!moves.upLeft(tile).isEmpty()){
                 for (Tile stone: moves.upLeft(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.upLeft(tile));
             }
             if (!moves.upRight(tile).isEmpty()){
                 for (Tile stone: moves.upRight(tile)) {
@@ -111,13 +108,13 @@ public class GameFlow {
                 //possibleMoves.put(tile,moves.right(tile));
             }
             if (!opponentStones.isEmpty()){
-                possibleMoves.put(tile,opponentStones);
+                possibleMoves.put(new AvailableTile(tile.getCoordX(),tile.getCoordY()),opponentStones);
             }
         }
     }
     public void updateCells(){
         for (Tile tile: possibleMoves.keySet()) {
-            board[tile.getCoordX()][tile.getCoordY()] = new AvailableTile(tile.getCoordX(),tile.getCoordY());
+            board[tile.getCoordX()][tile.getCoordY()] = tile;
         }
     }
     public void resetAvailable(){

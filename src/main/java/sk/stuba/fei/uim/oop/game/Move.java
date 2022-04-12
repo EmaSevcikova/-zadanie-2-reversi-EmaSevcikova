@@ -23,7 +23,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x-1][y].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x-1,y));
+            direction.add(board[x-1][y]);
             x--;
             if (board[x-1][y].getIntRepresentation() == player.getPlayerNum()){
                 return direction;
@@ -38,7 +38,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x-1][y+1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x-1,y+1));
+            direction.add(board[x-1][y+1]);
             x--;
             y++;
             if (board[x-1][y+1].getIntRepresentation() == player.getPlayerNum()){
@@ -54,7 +54,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x][y+1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x,y+1));
+            direction.add(board[x][y+1]);
             y++;
             if (board[x][y+1].getIntRepresentation() == player.getPlayerNum()){
                 return direction;
@@ -69,7 +69,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x+1][y+1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x+1,y+1));
+            direction.add(board[x+1][y+1]);
             x++;
             y++;
             if (board[x+1][y+1].getIntRepresentation() == player.getPlayerNum()){
@@ -85,7 +85,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x+1][y].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x+1,y));
+            direction.add(board[x+1][y]);
             x++;
             if (board[x+1][y].getIntRepresentation() == player.getPlayerNum()){
                 return direction;
@@ -100,7 +100,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x+1][y-1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x+1,y-1));
+            direction.add(board[x+1][y-1]);
             x++;
             y--;
             if (board[x+1][y-1].getIntRepresentation() == player.getPlayerNum()){
@@ -116,7 +116,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x][y-1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x,y-1));
+            direction.add(board[x][y-1]);
             y--;
             if (board[x][y-1].getIntRepresentation() == player.getPlayerNum()){
                 return direction;
@@ -131,7 +131,7 @@ public class Move {
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
         while (board[x-1][y-1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(new Stone(opponent,x-1,y-1));
+            direction.add(board[x-1][y-1]);
             x--;
             y--;
             if (board[x-1][y-1].getIntRepresentation() == player.getPlayerNum()){
