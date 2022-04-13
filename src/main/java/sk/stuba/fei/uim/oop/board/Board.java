@@ -56,26 +56,12 @@ public class Board  {
 
     }
 
-    public void paintBoard(Graphics g) {
-
-//        for (int i = 0; i < boardSize; i++){
-//            for (int j = 0; j < boardSize; j++) {
-//                g.setColor(new Color(1, 175, 109));
-//                g.fillRect(j * 60, i * 60, 60, 60);
-//                g.setColor(Color.BLACK);
-//                g.drawRect(j * 60, i * 60, 60, 60);
-//            }
-//    }
-
-        for (int i = 0; i < boardSize; i++) {
-            for (int j = 0; j < boardSize; j++)  {
-//                if (this.board[i+1][j+1] instanceof Stone || this.board[i+1][j+1] instanceof AvailableTile){
-//                    g.setColor(new Color(1, 175, 109));
-//                    g.fillRect(j * 60, i * 60, 60, 60);
-//                    g.setColor(Color.BLACK);
-//                    g.drawRect(j * 60, i * 60, 60, 60);
-//                }
-                this.board[i+1][j+1].paint(g);
+    public void resetAvailable(){
+        for (int i = 0; i < board.length; i++){
+            for (int j = 0; j < board.length; j++){
+                if (board[i][j] instanceof AvailableTile){
+                    board[i][j] = new EmptyTile(i,j);
+                }
             }
         }
 

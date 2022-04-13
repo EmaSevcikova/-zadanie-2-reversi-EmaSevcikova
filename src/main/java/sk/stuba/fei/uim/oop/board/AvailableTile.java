@@ -6,21 +6,12 @@ import java.awt.*;
 
 public class AvailableTile extends Tile {
 
-    @Setter
-    private int size;
 
     public AvailableTile(int coordX, int coordY) {
         super.intRepresentation = 0;
         super.coordX = coordX;
         super.coordY = coordY;
     }
-
-    @Override
-    public void setCoordX(int coordX, int coordY) {
-        super.coordX = coordX;
-        super.coordY = coordY;
-    }
-
 
 //    @Override
 //    public void paint(Graphics g, int i, int j){

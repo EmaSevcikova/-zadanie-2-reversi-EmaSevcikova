@@ -11,9 +11,6 @@ public class Stone extends Tile {
     @Setter
     @Getter
     private Player player;
-    @Setter
-    private int size;
-
 
 
     public Stone(Player player,int coordX, int coordY ) {
@@ -23,11 +20,6 @@ public class Stone extends Tile {
         super.coordY = coordY;
     }
 
-    @Override
-    public void setCoordX(int coordX, int coordY){
-        super.coordX = coordX;
-        super.coordY = coordY;
-    }
 
 //    @Override
 //    public void paint(Graphics g, int i, int j){

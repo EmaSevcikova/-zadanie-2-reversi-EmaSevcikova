@@ -7,20 +7,12 @@ import java.awt.*;
 
 public class EmptyTile extends Tile {
 
-    @Setter
-    private int size;
-
     public EmptyTile(int coordX, int coordY){
         super.intRepresentation = -1;
         super.coordX = coordX;
         super.coordY = coordY;
     }
 
-    @Override
-    public void setCoordX(int coordX, int coordY){
-        super.coordX = coordX;
-        super.coordY = coordY;
-    }
 
 //    @Override
 //    public void paint(Graphics g, int i, int j) {

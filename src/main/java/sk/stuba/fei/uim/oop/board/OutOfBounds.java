@@ -9,12 +9,6 @@ public class OutOfBounds extends Tile{
     }
 
     @Override
-    public void setCoordX(int coordX, int coordY){
-        super.coordX = coordX;
-        super.coordY = coordY;
-    }
-
-    @Override
     public void paint(Graphics g) {
     }
 
