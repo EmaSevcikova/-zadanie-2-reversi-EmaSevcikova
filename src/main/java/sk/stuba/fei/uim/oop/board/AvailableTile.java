@@ -13,16 +13,6 @@ public class AvailableTile extends Tile {
         super.coordY = coordY;
     }
 
-//    @Override
-//    public void paint(Graphics g, int i, int j){
-////        g.setColor(new Color(1, 175, 109));
-////        g.fillRect(j * 60, i * 60, 60, 60);
-//        g.setColor(Color.BLACK);
-//        g.drawRect(j * 60, i * 60, 60, 60);
-//
-//        g.setColor(Color.BLUE);
-//        g.drawOval(5 + i * 60, 5 + j * 60, 50, 50);
-//    }
     @Override
     public void paint(Graphics g){
     //        g.setColor(new Color(1, 175, 109));

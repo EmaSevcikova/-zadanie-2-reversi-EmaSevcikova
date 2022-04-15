@@ -7,7 +7,7 @@ import java.util.*;
 
 public class GameFlow {
 
-    private Tile[][] board;
+    private final Tile[][] board;
     @Getter
     private HashMap<Tile, List<Tile>> playerMoves;
     @Getter
@@ -168,7 +168,7 @@ public class GameFlow {
             for (Tile[] row: board) {
                 for (Tile tile : row) {
                     if (tile instanceof Stone){
-                        if (((Stone) tile).getPlayer().getPlayerNum() == 1){
+                        if (((Stone) tile).getPlayer() == player){
                             black++;
                         }
                         else {
@@ -186,5 +186,20 @@ public class GameFlow {
                winner = opponent;
             }
         }
+    }
+    public int countPlayerStones(Player player){
+        int total = 0;
+        for (Tile[] row: board) {
+            for (Tile tile: row) {
+                if (tile instanceof Stone) {
+                    if (((Stone) tile).getPlayer() == player) {
+                        total++;
+                    }
+
+                }
+            }
+
+        }
+        return total;
     }
 }

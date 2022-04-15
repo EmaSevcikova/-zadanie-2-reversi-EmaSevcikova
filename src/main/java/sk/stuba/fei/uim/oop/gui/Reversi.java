@@ -36,16 +36,7 @@ public class Reversi extends UniversalAdapter {
         bottomMenu.add(new JLabel("board size: 6x6"),BorderLayout.WEST);
 
 
-//        for (int i = 0; i < board.getBoard().length; i++){
-//        for (int j = 0; j < board.getBoard().length; j++){
-//            System.out.print(board.getBoard()[i][j].getIntRepresentation());
-//            System.out.print(" ");
-//        }
-//        System.out.println("\n");
-//    }
-
         frame.setTitle("Reversi");
-        //frame.setLocation(500, 150);
 
         gamePanel.setPreferredSize(new Dimension(360, 360));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,12 +56,8 @@ public class Reversi extends UniversalAdapter {
 
         frame.add(gamePanel, BorderLayout.CENTER);
 
-        //GameLogic logic = new GameLogic(board, panel,player,opponent);
-        // Tile clicked = new EmptyTile(0,0);
         for (Component c : gamePanel.getComponents()) {
-             //new GameLogic(board, (JPanel) c, gamePanel, player, opponent, gameFlow);
             c.addMouseListener(this);
-
         }
 
         menuBar.add(resize, BorderLayout.EAST);
@@ -81,9 +68,9 @@ public class Reversi extends UniversalAdapter {
         frame.pack();
 
 
-
         frame.setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -98,32 +85,32 @@ public class Reversi extends UniversalAdapter {
                 case "6x6":
                     size = 6;
                     dimension = new Dimension(360, 360);
-                    bottomMenu.removeAll();
-                    bottomMenu.add(new JLabel("board size: 6x6"),BorderLayout.WEST);
                     break;
                 case "8x8":
                     size = 8;
                     dimension = new Dimension(480, 480);
-                    bottomMenu.removeAll();
-                    bottomMenu.add(new JLabel("board size: 8x8"),BorderLayout.WEST);
                     break;
                 case "10x10":
                     size = 10;
                     dimension = new Dimension(600, 600);
-                    bottomMenu.removeAll();
-                    bottomMenu.add(new JLabel("board size: 10x10"),BorderLayout.WEST);
                     break;
                 case "12x12":
                     size = 12;
                     dimension = new Dimension(720, 720);
-                    bottomMenu.removeAll();
-                    bottomMenu.add(new JLabel("board size: 12x12"),BorderLayout.WEST);
                     break;
             }
 
         }
+
+        frame.remove(bottomMenu);
         frame.remove(gamePanel);
         frame.revalidate();
+
+        bottomMenu = new JMenuBar();
+        bottomMenu.setLayout(new BorderLayout());
+        bottomMenu.add(new JLabel("board size: " + size + "x" + size),BorderLayout.WEST);
+        frame.add(bottomMenu,BorderLayout.PAGE_END);
+
         board = new Board(size, player, opponent);
         gamePanel = new GamePanel(board);
         gamePanel.setPreferredSize(dimension);
@@ -133,6 +120,7 @@ public class Reversi extends UniversalAdapter {
         for (Component c : gamePanel.getComponents()) {
             c.addMouseListener(this);
         }
+
         frame.pack();
     }
 
@@ -170,12 +158,14 @@ public class Reversi extends UniversalAdapter {
             gameFlow.updateCells();
             if (gameFlow.checkEndOfGame()){
                 gameFlow.checkWinner(player,opponent);
-                if (gameFlow.getWinner().getPlayerNum() == 1){
+                if (gameFlow.getWinner() == player){
                     bottomMenu.add(new JLabel("you win!!!   "),BorderLayout.EAST);
                 }
                 else {
                     bottomMenu.add(new JLabel("your opponent wins  "),BorderLayout.EAST);
                 }
+                JLabel label = new JLabel("      Black:" + gameFlow.countPlayerStones(player) + "/ White:" + gameFlow.countPlayerStones(opponent));
+                bottomMenu.add(label,BorderLayout.CENTER);
             }
 
 

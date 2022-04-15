@@ -21,27 +21,10 @@ public class Stone extends Tile {
     }
 
 
-//    @Override
-//    public void paint(Graphics g, int i, int j){
-////        g.setColor(new Color(1, 175, 109));
-////        g.fillRect(j * 60, i * 60, 60, 60);
-//        g.setColor(Color.BLACK);
-//        g.drawRect(j * 60, i * 60, 60, 60);
-//        //g.setColor(Color.BLACK);
-//
-//        if(player.getPlayerNum() == 2){
-//            g.setColor(Color.WHITE);
-//        }
-//        g.fillOval(5 + i * 60, 5 + j * 60, 50, 50);
-//    }
-
     @Override
     public void paint(Graphics g){
-//        g.setColor(new Color(1, 175, 109));
-//        g.fillRect(j * 60, i * 60, 60, 60);
         g.setColor(Color.BLACK);
         g.drawRect( 0,  0, 60, 60);
-        //g.setColor(Color.BLACK);
 
         if(player.getPlayerNum() == 2){
             g.setColor(Color.WHITE);

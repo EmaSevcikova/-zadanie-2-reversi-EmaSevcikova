@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Move {
 
-    Tile[][] board;
-    Player player;
-    Player opponent;
+    private final Tile[][] board;
+    private final Player player;
+    private final Player opponent;
 
     public Move(Tile[][] board, Player player, Player opponent) {
         this.board = board;
