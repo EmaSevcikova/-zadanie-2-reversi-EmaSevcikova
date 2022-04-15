@@ -40,6 +40,7 @@ public class Reversi extends UniversalAdapter {
 
         gamePanel.setPreferredSize(new Dimension(360, 360));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setFocusable(true);
 
 
         JMenuBar menuBar = new JMenuBar();
@@ -65,6 +66,7 @@ public class Reversi extends UniversalAdapter {
         menuBar.add(new JLabel("   player: Black"),BorderLayout.CENTER);
         frame.add(menuBar, BorderLayout.PAGE_START);
         frame.add(bottomMenu, BorderLayout.PAGE_END);
+        frame.addKeyListener(this);
         frame.pack();
 
 
@@ -180,24 +182,37 @@ public class Reversi extends UniversalAdapter {
     }
     @Override
     public void keyPressed(KeyEvent e){
+
         switch (e.getKeyCode()){
 
             case KeyEvent.VK_ESCAPE:
+                System.out.println("esc");
                 frame.dispose();
                 break;
 
             case KeyEvent.VK_R:
+                System.out.println("R");
+
+                Dimension dimension = new Dimension(gamePanel.getWidth(), gamePanel.getHeight());
+                frame.remove(bottomMenu);
                 frame.remove(gamePanel);
                 frame.revalidate();
+
+                bottomMenu = new JMenuBar();
+                bottomMenu.setLayout(new BorderLayout());
+                bottomMenu.add(new JLabel("board size: " + size + "x" + size),BorderLayout.WEST);
+                frame.add(bottomMenu,BorderLayout.PAGE_END);
+
                 board = new Board(size, player, opponent);
                 gamePanel = new GamePanel(board);
-                gamePanel.setPreferredSize(new Dimension(gamePanel.getWidth(),gamePanel.getHeight()));
+                gamePanel.setPreferredSize(dimension);
                 frame.add(gamePanel);
                 gameFlow = new GameFlow(board);
 
                 for (Component c : gamePanel.getComponents()) {
                     c.addMouseListener(this);
                 }
+
                 frame.pack();
                 break;
         }
