@@ -32,13 +32,12 @@ public class Reversi extends UniversalAdapter {
         this.gamePanel = new GamePanel(board);
         this.gameFlow = new GameFlow(board);
         this.bottomMenu = new JMenuBar();
+
         bottomMenu.setLayout(new BorderLayout());
         bottomMenu.add(new JLabel("board size: 6x6"),BorderLayout.WEST);
 
 
         frame.setTitle("Reversi");
-
-        gamePanel.setPreferredSize(new Dimension(360, 360));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setFocusable(true);
 
@@ -52,9 +51,9 @@ public class Reversi extends UniversalAdapter {
         button.addActionListener(this);
 
         frame.setResizable(false);
-        //frame.getContentPane().setBackground( new Color(1, 175, 109));
         frame.setLayout(new BorderLayout());
 
+        gamePanel.setPreferredSize(new Dimension(360, 360));
         frame.add(gamePanel, BorderLayout.CENTER);
 
         for (Component c : gamePanel.getComponents()) {
@@ -64,11 +63,11 @@ public class Reversi extends UniversalAdapter {
         menuBar.add(resize, BorderLayout.EAST);
         menuBar.add(button, BorderLayout.WEST);
         menuBar.add(new JLabel("   player: Black"),BorderLayout.CENTER);
+
         frame.add(menuBar, BorderLayout.PAGE_START);
         frame.add(bottomMenu, BorderLayout.PAGE_END);
         frame.addKeyListener(this);
         frame.pack();
-
 
         frame.setVisible(true);
     }
@@ -123,6 +122,7 @@ public class Reversi extends UniversalAdapter {
             c.addMouseListener(this);
         }
 
+        frame.setFocusable(true);
         frame.pack();
     }
 
@@ -213,6 +213,7 @@ public class Reversi extends UniversalAdapter {
                     c.addMouseListener(this);
                 }
 
+                frame.setFocusable(true);
                 frame.pack();
                 break;
         }

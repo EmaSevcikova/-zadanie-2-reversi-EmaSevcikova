@@ -109,37 +109,31 @@ public class GameFlow {
                 for (Tile stone: moves.upRight(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.upRight(tile));
             }
             if (!moves.down(tile).isEmpty()){
                 for (Tile stone: moves.down(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.down(tile));
             }
             if (!moves.downLeft(tile).isEmpty()){
                 for (Tile stone: moves.downLeft(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.downLeft(tile));
             }
             if (!moves.downRight(tile).isEmpty()){
                 for (Tile stone: moves.downRight(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.downRight(tile));
             }
             if (!moves.left(tile).isEmpty()){
                 for (Tile stone: moves.left(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.left(tile));
             }
             if (!moves.right(tile).isEmpty()){
                 for (Tile stone: moves.right(tile)) {
                     Collections.addAll(opponentStones,stone);
                 }
-                //possibleMoves.put(tile,moves.right(tile));
             }
             if (!opponentStones.isEmpty()){
                 possibleMoves.put(new AvailableTile(tile.getCoordX(),tile.getCoordY()),opponentStones);

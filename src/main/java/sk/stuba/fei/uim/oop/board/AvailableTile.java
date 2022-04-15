@@ -1,7 +1,5 @@
 package sk.stuba.fei.uim.oop.board;
 
-import lombok.Setter;
-
 import java.awt.*;
 
 public class AvailableTile extends Tile {
@@ -15,8 +13,7 @@ public class AvailableTile extends Tile {
 
     @Override
     public void paint(Graphics g){
-    //        g.setColor(new Color(1, 175, 109));
-    //        g.fillRect(j * 60, i * 60, 60, 60);
+
         g.setColor(Color.BLACK);
         g.drawRect( 0, 0, 60, 60);
 

@@ -8,7 +8,7 @@ public class Player {
 
     @Setter
     @Getter
-    protected int playerNum;
+    private int playerNum;
 
 
     public Player(int playerNum) {

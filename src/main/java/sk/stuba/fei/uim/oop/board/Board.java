@@ -38,13 +38,9 @@ public class Board  {
 
             int middleIndex = (boardSize+2)/2;
             board[middleIndex][middleIndex] = new Stone(player,middleIndex,middleIndex);
-           // player.addStone(board[middleIndex][middleIndex]);
             board[middleIndex-1][middleIndex-1] = new Stone(player,middleIndex-1, middleIndex-1);
-            //player.addStone(board[middleIndex-1][middleIndex-1]);
             board[middleIndex-1][middleIndex] = new Stone(opponent,middleIndex-1, middleIndex);
-            //opponent.addStone(board[middleIndex-1][middleIndex]);
             board[middleIndex][middleIndex-1] = new Stone(opponent,middleIndex,middleIndex-1);
-            //opponent.addStone(board[middleIndex][middleIndex-1]);
 
             board[middleIndex-1][middleIndex+1] = new AvailableTile(middleIndex-1,middleIndex+1);
             board[middleIndex-2][middleIndex] = new AvailableTile(middleIndex-2,middleIndex);
