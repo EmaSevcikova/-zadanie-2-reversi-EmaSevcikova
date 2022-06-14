@@ -17,128 +17,22 @@ public class Move {
         this.opponent = opponent;
     }
 
-    public List<Tile> up(Tile tile){
+    public List<Tile> move(Tile tile, Direction d){
         int x = tile.getCoordX();
         int y = tile.getCoordY();
+        x += d.getX();
+        y += d.getY();
         List<Tile> direction = new ArrayList<>();
         List<Tile> empty = new ArrayList<>();
-        while (board[x-1][y].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x-1][y]);
-            x--;
-            if (board[x-1][y].getIntRepresentation() == player.getPlayerNum()){
+        while (board[x][y].getIntRepresentation() == opponent.getPlayerNum()){
+            direction.add(board[x][y]);
+            x += d.getX();
+            y += d.getY();
+            if (board[x][y].getIntRepresentation() == player.getPlayerNum()){
                 return direction;
             }
         }
-            return empty;
-    }
-
-    public List<Tile> upRight(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x-1][y+1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x-1][y+1]);
-            x--;
-            y++;
-            if (board[x-1][y+1].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
-    }
-
-    public List<Tile> right(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x][y+1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x][y+1]);
-            y++;
-            if (board[x][y+1].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
-    }
-
-    public List<Tile> downRight(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x+1][y+1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x+1][y+1]);
-            x++;
-            y++;
-            if (board[x+1][y+1].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
-    }
-
-    public List<Tile> down(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x+1][y].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x+1][y]);
-            x++;
-            if (board[x+1][y].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
-    }
-
-    public List<Tile> downLeft(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x+1][y-1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x+1][y-1]);
-            x++;
-            y--;
-            if (board[x+1][y-1].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
-    }
-
-    public List<Tile> left(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x][y-1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x][y-1]);
-            y--;
-            if (board[x][y-1].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
-    }
-
-    public List<Tile> upLeft(Tile tile){
-        int x = tile.getCoordX();
-        int y = tile.getCoordY();
-        List<Tile> direction = new ArrayList<>();
-        List<Tile> empty = new ArrayList<>();
-        while (board[x-1][y-1].getIntRepresentation() == opponent.getPlayerNum()){
-            direction.add(board[x-1][y-1]);
-            x--;
-            y--;
-            if (board[x-1][y-1].getIntRepresentation() == player.getPlayerNum()){
-                return direction;
-            }
-        }
-            return empty;
+        return empty;
     }
 
 }

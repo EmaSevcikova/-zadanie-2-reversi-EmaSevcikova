@@ -89,50 +89,19 @@ public class GameFlow {
     public void assignPossibleMoves(Player player, Player opponent){
         this.playerMoves = findPossibleMoves(player,opponent);
     }
+
     private HashMap<Tile, List<Tile>> findPossibleMoves(Player player, Player opponent){
         HashMap<Tile, List<Tile>> possibleMoves = new HashMap<>();
         List<Tile> possibleCells = moveFromEmptyCells(opponent);
         Move moves = new Move(board,player,opponent);
+
         for (Tile tile : possibleCells) {
             List<Tile> opponentStones = new ArrayList<>();
-            if (!moves.up(tile).isEmpty()){
-                for (Tile stone: moves.up(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.upLeft(tile).isEmpty()){
-                for (Tile stone: moves.upLeft(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.upRight(tile).isEmpty()){
-                for (Tile stone: moves.upRight(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.down(tile).isEmpty()){
-                for (Tile stone: moves.down(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.downLeft(tile).isEmpty()){
-                for (Tile stone: moves.downLeft(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.downRight(tile).isEmpty()){
-                for (Tile stone: moves.downRight(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.left(tile).isEmpty()){
-                for (Tile stone: moves.left(tile)) {
-                    Collections.addAll(opponentStones,stone);
-                }
-            }
-            if (!moves.right(tile).isEmpty()){
-                for (Tile stone: moves.right(tile)) {
-                    Collections.addAll(opponentStones,stone);
+            for (Direction d : Direction.values()) {
+                if (!moves.move(tile,d).isEmpty()){
+                    for (Tile stone: moves.move(tile,d)) {
+                        Collections.addAll(opponentStones,stone);
+                    }
                 }
             }
             if (!opponentStones.isEmpty()){
